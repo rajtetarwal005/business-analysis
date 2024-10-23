@@ -62,3 +62,5 @@ frequency_of_customer.show()
 # total sales by each country
 each_country = customer_menu_df.groupby("location").agg(F.sum("price").alias("total sale"))
 each_country.show()
+
+# this project is made by raj tetarwal
