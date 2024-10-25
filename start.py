@@ -36,16 +36,16 @@ menu_df.show()
 # total amount spent by each customer
 customer_menu_df = customer_df.join(menu_df, "product_id" ,"inner").drop(menu_df.product_id)
 # customer_menu_df.show()
-total_amt = customer_menu_df.groupBy("customer_id").agg(F.sum("price").cast("int").alias("amount")).orderBy("amount",ascending=False)
-# total_amt.show()
+# total_amt = customer_menu_df.groupBy("customer_id").agg(F.sum("price").cast("int").alias("amount")).orderBy("amount",ascending=False)
+# # total_amt.show()
 
 # total amount spent by each food category
-food_category = customer_menu_df.groupby("product_name").agg(F.sum("price").cast("int").alias("amount"))
-# food_category.show()
+# food_category = customer_menu_df.groupby("product_name").agg(F.sum("price").cast("int").alias("amount"))
+# # food_category.show()
 
-# total amount of sales in each month
-each_month = customer_menu_df.groupby("month").agg(F.sum("price").cast("int").alias("amount")).orderBy("month")
-# each_month.show()
+# # total amount of sales in each month
+# each_month = customer_menu_df.groupby("month").agg(F.sum("price").cast("int").alias("amount")).orderBy("month")
+# # each_month.show()
 
 # total number of order by each category
 each_category =customer_menu_df.groupby("product_name").agg(F.count("product_id").alias("number of product")).orderBy("number of product",ascending=False)
@@ -63,4 +63,12 @@ frequency_of_customer.show()
 each_country = customer_menu_df.groupby("location").agg(F.sum("price").alias("total sale"))
 each_country.show()
 
+each_month = customer_menu_df.groupby("month").agg(F.sum("price").cast("int").alias("amount")).orderBy("month")
+each_month.show()
+
+total_amt = customer_menu_df.groupBy("customer_id").agg(F.sum("price").cast("int").alias("amount")).orderBy("amount",ascending=False)
+total_amt.show()
+
+food_category = customer_menu_df.groupby("product_name").agg(F.sum("price").cast("int").alias("amount"))
+food_category.show()
 # this project is made by raj tetarwal
